@@ -1,0 +1,9 @@
+D:\Documents\GitHub\VoidBot\Void.Core\bin\Debug\netcoreapp3.1\Void.Core.deps.json
+D:\Documents\GitHub\VoidBot\Void.Core\bin\Debug\netcoreapp3.1\Void.Core.dll
+D:\Documents\GitHub\VoidBot\Void.Core\bin\Debug\netcoreapp3.1\Void.Core.pdb
+D:\Documents\GitHub\VoidBot\Void.Core\obj\Debug\netcoreapp3.1\Void.Core.csproj.AssemblyReference.cache
+D:\Documents\GitHub\VoidBot\Void.Core\obj\Debug\netcoreapp3.1\Void.Core.AssemblyInfoInputs.cache
+D:\Documents\GitHub\VoidBot\Void.Core\obj\Debug\netcoreapp3.1\Void.Core.AssemblyInfo.cs
+D:\Documents\GitHub\VoidBot\Void.Core\obj\Debug\netcoreapp3.1\Void.Core.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\VoidBot\Void.Core\obj\Debug\netcoreapp3.1\Void.Core.dll
+D:\Documents\GitHub\VoidBot\Void.Core\obj\Debug\netcoreapp3.1\Void.Core.pdb

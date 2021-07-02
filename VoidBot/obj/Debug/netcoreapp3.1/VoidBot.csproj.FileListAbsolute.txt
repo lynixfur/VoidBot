@@ -23,3 +23,5 @@ D:\Documents\GitHub\VoidBot\VoidBot\obj\Debug\netcoreapp3.1\VoidBot.csproj.CopyC
 D:\Documents\GitHub\VoidBot\VoidBot\obj\Debug\netcoreapp3.1\VoidBot.dll
 D:\Documents\GitHub\VoidBot\VoidBot\obj\Debug\netcoreapp3.1\VoidBot.pdb
 D:\Documents\GitHub\VoidBot\VoidBot\obj\Debug\netcoreapp3.1\VoidBot.genruntimeconfig.cache
+D:\Documents\GitHub\VoidBot\VoidBot\bin\Debug\netcoreapp3.1\Void.Core.dll
+D:\Documents\GitHub\VoidBot\VoidBot\bin\Debug\netcoreapp3.1\Void.Core.pdb

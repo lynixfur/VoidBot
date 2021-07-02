@@ -57,6 +57,9 @@
                 slashCommandsExtension.RegisterCommands<SetupCommands>(851958001739759677);
             }
 
+            // Get Services
+            await services.GetRequiredService<NetworkStatusService>().InitialiseAsync();
+
             //login
             await bot.StartAsync();
             await Task.Delay(Timeout.Infinite);
@@ -65,6 +68,7 @@
         private IServiceProvider ConfigureServices()
         {
             return new ServiceCollection()
+                   .AddSingleton<NetworkStatusService>()
                    .AddSingleton(bot)
                    .AddSingleton(config)
                    .BuildServiceProvider();

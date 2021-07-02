@@ -5,6 +5,7 @@
     public class Config
     {
         public DiscordConfig DiscordConfig { get; set; }
+        public VoidwyrmDc VoidwyrmDc { get; set; }
         public List<MySql> MySql { get; set; }
     }
 }
