@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\GitHub\\VoidBot\\VoidBot\\VoidBot.csproj": {}
+    "D:\\Documents\\GitHub\\VoidBot\\Void.Data\\Void.Data.csproj": {}
   },
   "projects": {
     "D:\\Documents\\GitHub\\VoidBot\\Void.Core\\Void.Core.csproj": {
@@ -64,14 +64,14 @@
         }
       }
     },
-    "D:\\Documents\\GitHub\\VoidBot\\VoidBot\\VoidBot.csproj": {
+    "D:\\Documents\\GitHub\\VoidBot\\Void.Data\\Void.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\GitHub\\VoidBot\\VoidBot\\VoidBot.csproj",
-        "projectName": "VoidBot",
-        "projectPath": "D:\\Documents\\GitHub\\VoidBot\\VoidBot\\VoidBot.csproj",
+        "projectUniqueName": "D:\\Documents\\GitHub\\VoidBot\\Void.Data\\Void.Data.csproj",
+        "projectName": "Void.Data",
+        "projectPath": "D:\\Documents\\GitHub\\VoidBot\\Void.Data\\Void.Data.csproj",
         "packagesPath": "C:\\Users\\drago\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\GitHub\\VoidBot\\VoidBot\\obj\\",
+        "outputPath": "D:\\Documents\\GitHub\\VoidBot\\Void.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -110,17 +110,13 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "DSharpPlus": {
+            "Dapper": {
               "target": "Package",
-              "version": "[4.1.0-nightly-00910, )"
+              "version": "[2.0.90, )"
             },
-            "DSharpPlus.Interactivity": {
+            "Npgsql": {
               "target": "Package",
-              "version": "[4.1.0-nightly-00910, )"
-            },
-            "IDoEverything.DSharpPlus.SlashCommands": {
-              "target": "Package",
-              "version": "[1.5.0, )"
+              "version": "[6.0.0-preview5, )"
             }
           },
           "imports": [

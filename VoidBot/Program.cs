@@ -9,8 +9,8 @@
     using DSharpPlus.Interactivity.Extensions;
     using DSharpPlus.SlashCommands;
     using Microsoft.Extensions.DependencyInjection;
+    using Void.Core.Entities;
     using VoidBot.Commands;
-    using VoidBot.Models;
     using VoidBot.Services;
 
     internal class Program
