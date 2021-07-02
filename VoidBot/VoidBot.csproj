@@ -15,4 +15,8 @@
     <PackageReference Include="IDoEverything.DSharpPlus.SlashCommands" Version="1.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Void.Core\Void.Core.csproj" />
+  </ItemGroup>
+
 </Project>

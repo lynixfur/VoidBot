@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoidBot", "VoidBot.csproj", "{E6F17F97-43AB-4797-97BB-2D37671C13EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Void.Core", "..\Void.Core\Void.Core.csproj", "{F9598FDF-A93F-4881-A2B1-B4FFB4B81066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Void.Data", "..\Void.Data\Void.Data.csproj", "{D0A8A325-2B93-45F7-8CA5-BB5C79968879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E6F17F97-43AB-4797-97BB-2D37671C13EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6F17F97-43AB-4797-97BB-2D37671C13EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6F17F97-43AB-4797-97BB-2D37671C13EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9598FDF-A93F-4881-A2B1-B4FFB4B81066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9598FDF-A93F-4881-A2B1-B4FFB4B81066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9598FDF-A93F-4881-A2B1-B4FFB4B81066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9598FDF-A93F-4881-A2B1-B4FFB4B81066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0A8A325-2B93-45F7-8CA5-BB5C79968879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A8A325-2B93-45F7-8CA5-BB5C79968879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A8A325-2B93-45F7-8CA5-BB5C79968879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A8A325-2B93-45F7-8CA5-BB5C79968879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

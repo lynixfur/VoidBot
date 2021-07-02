@@ -2,7 +2,7 @@
 {
     using System.IO;
     using Newtonsoft.Json;
-    using VoidBot.Models;
+    using Void.Core.Entities;
 
     public static class FileService
     {

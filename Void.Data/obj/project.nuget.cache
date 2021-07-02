@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "0ZAnhhZD1x6jevhBZRQ5JlerSRuIiGJ8Z3au4SM7DfSIKmUGLfH79zZfslRmOZrWEv9tGLRbkKlgsyLd/MAdDw==",
+  "success": true,
+  "projectFilePath": "D:\\Documents\\GitHub\\VoidBot\\Void.Data\\Void.Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\drago\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
+    "C:\\Users\\drago\\.nuget\\packages\\npgsql\\6.0.0-preview5\\npgsql.6.0.0-preview5.nupkg.sha512",
+    "C:\\Users\\drago\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
+    "C:\\Users\\drago\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

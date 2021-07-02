@@ -1,4 +1,4 @@
-﻿namespace VoidBot.Models
+﻿namespace Void.Core.Entities
 {
     public class DiscordConfig
     {
