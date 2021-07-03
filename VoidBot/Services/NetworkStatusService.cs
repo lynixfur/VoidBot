@@ -1,6 +1,9 @@
 ﻿namespace VoidBot.Services
 {
+    using System;
     using System.Collections.Generic;
+    using System.Collections.Immutable;
+    using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
     using System.Timers;
@@ -34,10 +37,15 @@
 
         private void OnUpdateStatus(object _sender, ElapsedEventArgs _e)
         {
-            Task.WhenAll(UpdateStatusTile());
+            Task.WhenAll(CreateStatusTile());
         }
 
         private async Task CreateStatusTile()
+        {
+            await SetTileContent();
+        }
+
+        private async Task SetTileContent()
         {
             DiscordClient bot = shardedBot.GetShard(config.VoidwyrmDc.ServerId);
             DiscordGuild server = await bot.GetGuildAsync(config.VoidwyrmDc.ServerId);
@@ -64,113 +72,111 @@
 
             if (serverStatus != null)
             {
+
                 DiscordEmoji typeEmoji = serverStatus.Type switch
                 {
-                    "Operational" => DiscordEmoji.FromUnicode(bot, ":cloud_check:"),
-                    "MinorOutage" => DiscordEmoji.FromUnicode(bot, ":cloud_error~1:"),
-                    "MajorOutage" => DiscordEmoji.FromUnicode(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromUnicode(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "MinorOutage" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "MajorOutage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
+
+
 
                 DiscordEmbedBuilder statusEmbed = new DiscordEmbedBuilder
                 {
                     Title = "Voidwyrm Server Status",
                     Color = DiscordColor.Black,
-                    Description = $"{typeEmoji}**__{serverStatus.Type}__**{typeEmoji}\n\n" +
+                    Description = $"{typeEmoji} **__{serverStatus.Type}__** {typeEmoji}\n\n" +
                                   $"{serverStatus.Reason}"
                 };
 
-                DiscordEmoji webHostEmoji = serverStatus.Type switch
+                DiscordEmoji webHostEmoji = serverStatus.Servers.WebHost switch
                 {
-                    "Operational" => DiscordEmoji.FromName(bot, ":cloud_check:"),
-                    "Issues" => DiscordEmoji.FromName(bot, ":cloud_error~1:"),
-                    "Outage" => DiscordEmoji.FromName(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromName(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "Issues" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "Outage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
 
-                statusEmbed.AddField($"{webHostEmoji}Voidwyrm WebHost", "");
+                statusEmbed.AddField($"{webHostEmoji} Voidwyrm WebHost", "\u200B");
 
-                DiscordEmoji dbCEmoji = serverStatus.Type switch
+                DiscordEmoji dbCEmoji = serverStatus.Servers.DB_CA switch
                 {
-                    "Operational" => DiscordEmoji.FromName(bot, ":cloud_check:"),
-                    "Issues" => DiscordEmoji.FromName(bot, ":cloud_error~1:"),
-                    "Outage" => DiscordEmoji.FromName(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromName(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "Issues" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "Outage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
 
-                statusEmbed.AddField($"{dbCEmoji}Voidwyrm DB_CA", "");
+                statusEmbed.AddField($"{dbCEmoji} Voidwyrm DB_CA", "\u200B");
 
-                DiscordEmoji dbUEmoji = serverStatus.Type switch
+                DiscordEmoji dbUEmoji = serverStatus.Servers.DB_US switch
                 {
-                    "Operational" => DiscordEmoji.FromName(bot, ":cloud_check:"),
-                    "Issues" => DiscordEmoji.FromName(bot, ":cloud_error~1:"),
-                    "Outage" => DiscordEmoji.FromName(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromName(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "Issues" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "Outage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
 
-                statusEmbed.AddField($"{dbUEmoji}Voidwyrm DB_CA", "");
+                statusEmbed.AddField($"{dbUEmoji} Voidwyrm DB_US", "\u200B");
 
-                DiscordEmoji dbEEmoji = serverStatus.Type switch
+                DiscordEmoji dbEEmoji = serverStatus.Servers.DB_EU switch
                 {
-                    "Operational" => DiscordEmoji.FromName(bot, ":cloud_check:"),
-                    "Issues" => DiscordEmoji.FromName(bot, ":cloud_error~1:"),
-                    "Outage" => DiscordEmoji.FromName(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromName(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "Issues" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "Outage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
 
-                statusEmbed.AddField($"{dbEEmoji}Voidwyrm DB_CA", "");
+                statusEmbed.AddField($"{dbEEmoji} Voidwyrm DB_EU", "\u200B");
 
-                DiscordEmoji cdnCEmoji = serverStatus.Type switch
+                DiscordEmoji cdnCEmoji = serverStatus.Servers.CDN_CA switch
                 {
-                    "Operational" => DiscordEmoji.FromName(bot, ":cloud_check:"),
-                    "Issues" => DiscordEmoji.FromName(bot, ":cloud_error~1:"),
-                    "Outage" => DiscordEmoji.FromName(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromName(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "Issues" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "Outage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
 
-                statusEmbed.AddField($"{cdnCEmoji}Voidwyrm DB_CA", "");
+                statusEmbed.AddField($"{cdnCEmoji} Voidwyrm CDN_CA", "\u200B");
 
-                DiscordEmoji cdnUEmoji = serverStatus.Type switch
+                DiscordEmoji cdnUEmoji = serverStatus.Servers.CDN_US switch
                 {
-                    "Operational" => DiscordEmoji.FromName(bot, ":cloud_check:"),
-                    "Issues" => DiscordEmoji.FromName(bot, ":cloud_error~1:"),
-                    "Outage" => DiscordEmoji.FromName(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromName(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "Issues" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "Outage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
 
-                statusEmbed.AddField($"{cdnUEmoji}Voidwyrm DB_CA", "");
+                statusEmbed.AddField($"{cdnUEmoji} Voidwyrm CDN_US", "\u200B");
 
-                DiscordEmoji cdnEEmoji = serverStatus.Type switch
+                DiscordEmoji cdnEEmoji = serverStatus.Servers.CDN_EU switch
                 {
-                    "Operational" => DiscordEmoji.FromName(bot, ":cloud_check:"),
-                    "Issues" => DiscordEmoji.FromName(bot, ":cloud_error~1:"),
-                    "Outage" => DiscordEmoji.FromName(bot, ":cloud_error:"),
-                    _ => DiscordEmoji.FromName(bot, ":cloud_error:")
+                    "Operational" => DiscordEmoji.FromName(bot, ":white_check_mark:"),
+                    "Issues" => DiscordEmoji.FromName(bot, ":warning:"),
+                    "Outage" => DiscordEmoji.FromName(bot, ":x:"),
+                    _ => DiscordEmoji.FromName(bot, ":x:")
                 };
 
-                statusEmbed.AddField($"{cdnEEmoji}Voidwyrm DB_CA", "");
+                statusEmbed.AddField($"{cdnEEmoji}Voidwyrm CDN_EU", "\u200B");
+
+                statusEmbed.WithFooter($"Updated at {DateTime.Now}", "https://voidwyrmapi.com/assets/VoidwyrmIco.png");
 
                 statusMessage.WithEmbed(statusEmbed);
             }
 
-            statusMessage.AddComponents(new DiscordButtonComponent
-                                        {
-                                            Label = "Report Outage",
-                                            Style = ButtonStyle.Danger
-                                        });
+            //DiscordActionRowComponent buttonRow = new DiscordActionRowComponent(new DiscordComponent[]
+            //                                                                    {
+            //                                                                        new DiscordButtonComponent(ButtonStyle.Danger, "Status-Report_Outage", "Report Outage"),
+            //                                                                        new DiscordLinkButtonComponent("https://voidwyrmapi.com/", "Voidwyrm Website")
+            //                                                                    });
 
-            statusMessage.AddComponents(new DiscordButtonComponent
-                                        {
-                                            Label = "Website",
-                                            Style = ButtonStyle.Primary
-                                        });
 
-            await statusMessage.SendAsync(status);
-        }
 
-        private async Task UpdateStatusTile()
-        {
+            statusMessage.AddComponents(new DiscordLinkButtonComponent("https://voidwyrmapi.com/", "Voidwyrm Website"));
 
+            statusTile = await statusMessage.SendAsync(status);
         }
     }
 }
